@@ -396,19 +396,7 @@ func New(params DriverParameters) (*Driver, error) {
 		obs.WithPathStyle(params.PathStyle),
 		//obs.WithSecurityToken(params.SecurityToken),
 	)
-
-	// Create a bucket with given name
-	_, err := client.CreateBucket(&obs.CreateBucketInput{
-		Bucket:       params.Bucket,
-		ACL:          params.ObjectACL,
-		StorageClass: params.StorageClass,
-		BucketLocation: obs.BucketLocation{
-			Location: params.Region,
-		},
-	})
-	if err != nil {
-		return nil, err
-	}
+           
 
 	d := &driver{
 		Client:                      client,
